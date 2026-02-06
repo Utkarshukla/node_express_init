@@ -10,6 +10,17 @@ export const TodoController = {
         }
     },
 
+    async viewTodo(req, res) {
+        try {
+            const id = req.params.id;
+            const todo = await TodoService.viewTodo(id);
+            res.json(todo);
+            
+        } catch (error) {
+            return res.json(error.message);
+        }
+    },
+
     async createTodo(req, res, next) {
         try {
             const { title } = req.body;

@@ -8,6 +8,15 @@ export const TodoRepository = {
     );
     return rows.map(row => new Todo(row));
   },
+  async viewTodo(id){
+    const [rows] = await db.query(
+      'SELECT * FROM todos WHERE ID = ?',
+      [id]
+    ) 
+
+    return row[0]? new Todo(rows[0]) : null;
+
+  },
 
   async findById(id) {
     const [rows] = await db.query(

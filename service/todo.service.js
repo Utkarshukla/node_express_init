@@ -5,6 +5,10 @@ export const TodoService = {
     return await TodoRepository.findAll();
   },
 
+  async viewTodo(id){
+    return await TodoRepository.viewTodo(id);
+  },
+
   async createTodo(title) {
     if (!title || title.trim() === '') {
       throw new Error('Title is required');
